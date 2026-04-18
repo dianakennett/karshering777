@@ -25,11 +25,11 @@
     <div class="profile-page">
     <div class="profile-container">
 
-        <img src="img/35f8e15e7589c77528ec9da4dd7e2ad3.jpg" alt="avatar" class="profile-avatar">
+        <img src="img/mishanya.jpg" alt="avatar" class="profile-avatar">
 
         <div class="profile-info">
             <div class="profile-top">
-                <h2>Станислав Дакимакуров</h2>
+                <h2>Машонка Летвен</h2>
                 <span class="premium">Premium</span>
             </div>
             <button class="edit-btn">Редактировать</button>
@@ -38,30 +38,40 @@
 </div>
 
 <div class="favorites">
-    <h3>Избранное</h3>
-    <div class="fav-list">
 
+    <div class="fav-tabs">
+        <span class="fav-tab active" data-tab="cars">Избранные авто</span>
+        <span class="fav-tab" data-tab="addresses">Мои адреса</span>
+        <span class="fav-tab" data-tab="subscriptions">Моя подписка</span>
+    </div>
+
+
+    <div class="fav-list" id="cars">
         <div class="fav-item">
             <span>Toyota Rav4</span>
-            <img src="img/maki_waste-basket.png" class="trash" alt="delete">
+            <img src="img/maki_waste-basket.png" class="trash">
         </div>
-
         <div class="fav-item">
             <span>Honda Corvus</span>
-            <img src="img/maki_waste-basket.png" class="trash" alt="delete">
+            <img src="img/maki_waste-basket.png" class="trash">
         </div>
-
-        <div class="fav-item">
-            <span>Nissan Murano</span>
-            <img src="img/maki_waste-basket.png" class="trash" alt="delete">
-        </div>
-
-        <div class="fav-item">
-            <span>Toyota Wagon II</span>
-            <img src="img/maki_waste-basket.png" class="trash" alt="delete">
-        </div>
-
     </div>
+
+
+    <div class="fav-list" id="addresses" style="display:none;">
+        <div class="fav-item">
+            <span>Москва, ул. Ленина 12</span>
+            <img src="img/maki_waste-basket.png" class="trash">
+        </div>
+    </div>
+
+
+    <div class="fav-list" id="subscriptions" style="display:none;">
+        <div class="fav-item">
+            <span>Премиум тариф — активен</span>
+        </div>
+    </div>
+</div>
 </div>
      <footer class="footer">
         <div class="footer-container">
@@ -87,5 +97,21 @@
         </div>
     </footer>
 </div> 
+<script>
+const tabs = document.querySelectorAll('.fav-tab');
+const lists = document.querySelectorAll('.fav-list');
+
+tabs.forEach(tab => {
+    tab.onclick = () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        lists.forEach(l => l.style.display = 'none');
+
+        tab.classList.add('active');
+
+        const activeList = document.getElementById(tab.dataset.tab);
+        activeList.style.display = 'flex'; // 👈 ВАЖНО
+    }
+});
+</script>
 </body>
 </html>

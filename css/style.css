@@ -303,9 +303,30 @@ header nav ul li:not(.active) a:hover {
     font-size: 14px;
 }
 
+.tariff-hero {
+    text-align: center;
+    padding: 60px 20px 30px;
+    background: transparent; 
+}
+
+.tariff-hero h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+    color: antiquewhite;
+}
+
+.tariff-hero p {
+    font-size: 20px;
+    color: #d1cfcf;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
 .tariff-slider {
     width: 90%;
     margin: 80px auto;
+    margin-top: 30px;
 }
 
 .tariff-tabs {
@@ -373,9 +394,29 @@ header nav ul li:not(.active) a:hover {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    font-size: 14px;
+    font-size: 25px;
     position: relative;
     z-index: 2;
+}
+
+.choose-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 22px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 30px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+    backdrop-filter: blur(8px);
+}
+
+.choose-btn:hover {
+    background: #6b9c96;
+    border-color: #6b9c96;
+    transform: translateX(5px);
 }
 
 .slide1 {
@@ -631,4 +672,94 @@ header nav ul li:not(.active) a:hover {
     width: 100%;
     height: 2px;
     background: antiquewhite;
+}
+.cars-page {
+    width: 1200px;
+    margin: 40px auto;
+}
+
+.cars-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid #6b9c96;
+    color: #6b9c96;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.cars-grid {
+    display: flex;
+    gap: 20px;
+}
+
+.car-card {
+    position: relative;
+    width: 320px;
+    border-radius: 15px;
+    overflow: hidden;
+    background: #2f3b3a;
+    cursor: pointer;
+}
+
+.car-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.car-info {
+    padding: 15px;
+}
+
+.car-info h3 {
+    font-size: 18px;
+}
+
+.tag {
+    background: #ff6b6b;
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.car-hover {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    color: white;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.car-card:hover .car-hover {
+    opacity: 1;
+}
+
+.book-btn {
+    margin-top: 10px;
+    padding: 10px 18px;
+    background: #6b9c96;
+    border-radius: 20px;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.book-btn:hover {
+    background: #5a8781;
 }

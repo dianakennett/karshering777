@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novodrive</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="wrapper">
+
+    <header class="site-header">
+        <div class="container">
+            <div class="logo"><a href="index.html">НОВОДРАЙВ</a></div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="tariffs.html">Тарифы</a></li>
+                    <li class="active"><a href="info.html">О нас</a></li>
+                    <li class="profile">
+                        <a href="login.html">Личный кабинет
+                            <img src="img/ix_user-profile-filled.png" alt="person">
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="booking-page">
+
+    <div class="booking-container">
+
+        <div class="booking-gallery">
+            <img src="img/celica.jpg" class="main-img" id="mainImage">
+
+            <div class="thumbs">
+                <img src="img/celica.jpg" onclick="changeImg(this)">
+                <img src="img/2000 Toyota Celica 027.jpg" onclick="changeImg(this)">
+                <img src="img/original.jpg" onclick="changeImg(this)">
+            </div>
+        </div>
+
+        <div class="booking-info">
+
+            <h2>Toyota Celica 2002</h2>
+            <p class="price">от 7 ₽/мин</p>
+
+            <div class="specs">
+                <div><b>Кузов:</b> Купе</div>
+                <div><b>Топливо:</b> Бензин</div>
+                <div><b>КПП:</b> Автомат</div>
+                <div><b>Мощность:</b> 190 л.с.</div>
+                <div><b>Объём:</b> 1.8 л</div>
+            </div>
+
+            <div class="booking-form">
+
+                <select>
+                    <option>Выберите город</option>
+                    <option>Новосибирск</option>
+                    <option>Чулым</option>
+                </select>
+
+                <div class="date-time">
+                    <input type="date">
+                    <input type="time">
+                </div>
+
+                <div class="date-time">
+                    <input type="date">
+                    <input type="time">
+                </div>
+
+                <select>
+                    <option>Выберите тариф</option>
+                    <option>Фикс</option>
+                    <option>Поминутный</option>
+                    <option>Свой тариф</option>
+                    <option>Подписка</option>
+                </select>
+
+                <button class="book-btn">Забронировать</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+     <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-left">
+                <h3>НОВОДРАЙВ</h3>
+                <p>Удобный сервис каршеринга для города</p>
+            </div>
+
+            <div class="footer-center">
+                <ul>
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#">Тарифы</a></li>
+                    <li><a href="#">О нас</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-right">
+                <p>+7 (999) 123-45-67</p>
+                <p>✉ info@novodrive.ru</p>
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Новодрайв. Все права защищены.</p>
+        </div>
+    </footer>
+</div> 
+<script>
+function changeImg(el) {
+    document.getElementById('mainImage').src = el.src;
+}
+</script>
+</body>
+</html>

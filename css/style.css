@@ -763,3 +763,90 @@ header nav ul li:not(.active) a:hover {
 .book-btn:hover {
     background: #5a8781;
 }
+
+.booking-page {
+    width: 1200px;
+    margin: 60px auto;
+}
+
+.booking-container {
+    display: flex;
+    gap: 40px;
+}
+
+.booking-gallery {
+    width: 50%;
+}
+
+.main-img {
+    width: 100%;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.thumbs {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.thumbs img {
+    width: 100px;
+    border-radius: 8px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.thumbs img:hover {
+    opacity: 1;
+}
+
+.booking-info {
+    width: 50%;
+}
+
+.price {
+    margin: 10px 0 20px;
+    color: #ccc;
+}
+
+.specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.booking-form select,
+.booking-form input {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: #eae3d2;
+}
+
+.date-time {
+    display: flex;
+    gap: 10px;
+}
+
+.book-btn {
+    padding: 15px;
+    background: #6b9c96;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.book-btn:hover {
+    background: #5a8781;
+}

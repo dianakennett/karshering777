@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.html");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -18,18 +26,18 @@
                     <li><a href="index.html">Главная</a></li>
                     <li><a href="tariffs.html">Тарифы</a></li>
                     <li><a href="#">Заказы</a></li>
+                    <li><a href="php/logout.php" class="logout-btn">Выйти</a></li>
                 </ul>
             </nav>
         </div>
     </header>
     <div class="profile-page">
     <div class="profile-container">
-
         <img src="img/mishanya.jpg" alt="avatar" class="profile-avatar">
 
         <div class="profile-info">
             <div class="profile-top">
-                <h2>Мишаня Летвен</h2>
+              <h2><?php echo $_SESSION['first_name'] . " " . $_SESSION['last_name']; ?></h2>
                 <span class="premium">Premium</span>
             </div>
             <button class="edit-btn">Редактировать</button>

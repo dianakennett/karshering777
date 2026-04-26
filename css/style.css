@@ -850,3 +850,16 @@ header nav ul li:not(.active) a:hover {
 .book-btn:hover {
     background: #5a8781;
 }
+
+.logout-btn {
+    margin-left: 20px;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 10px;
+    background: #2e2f3e;
+}
+
+.logout-btn:hover {
+    background: #1f202a;
+}

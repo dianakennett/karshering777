@@ -5,6 +5,12 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.html");
     exit();
 }
+
+require 'php/db.php';
+
+$user_id = $_SESSION['user_id'];
+
+$bookings = $conn->query("SELECT * FROM bookings WHERE user_id = $user_id ORDER BY created_at DESC");
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -51,6 +57,7 @@ if (!isset($_SESSION['user_id'])) {
         <span class="fav-tab active" data-tab="cars">Избранные авто</span>
         <span class="fav-tab" data-tab="addresses">Мои адреса</span>
         <span class="fav-tab" data-tab="subscriptions">Моя подписка</span>
+        <span class="fav-tab" data-tab="subscriptions">Мои бронирования</span>
     </div>
 
 
@@ -80,6 +87,26 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </div>
 </div>
+<div class="favorites">
+    <div class="fav-list">
+        <?php if ($bookings && $bookings->num_rows > 0): ?>
+    <?php while ($booking = $bookings->fetch_assoc()): ?>
+        <div class="fav-item">
+            <span>
+                <?php echo $booking['car_name']; ?> —
+                <?php echo $booking['date_from']; ?>
+                <?php echo $booking['time_from']; ?>
+            </span>
+            <span><?php echo $booking['status']; ?></span>
+        </div>
+    <?php endwhile; ?>
+<?php else: ?>
+    <div class="fav-item">
+        <span>У вас пока нет бронирований</span>
+    </div>
+<?php endif; ?>
+    </div>
+</div>
 </div>
      <footer class="footer">
         <div class="footer-container">
@@ -88,11 +115,16 @@ if (!isset($_SESSION['user_id'])) {
                 <p>Удобный сервис каршеринга для города</p>
             </div>
             <div class="footer-center">
-                <ul>
-                    <li><a href="#">Главная</a></li>
-                    <li><a href="#">Тарифы</a></li>
-                    <li><a href="#">О нас</a></li>
-                </ul>
+               <ul>
+    <li><a href="index.html">Главная</a></li>
+    <li><a href="tariffs.html">Тарифы</a></li>
+    <li><a href="#">Заказы</a></li>
+
+    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+        <li><a href="admin_cars.php">Админка</a></li>
+    <?php endif; ?>
+
+</ul>
             </div>
 
             <div class="footer-right">
@@ -117,7 +149,7 @@ tabs.forEach(tab => {
         tab.classList.add('active');
 
         const activeList = document.getElementById(tab.dataset.tab);
-        activeList.style.display = 'flex'; // 👈 ВАЖНО
+        activeList.style.display = 'flex'; 
     }
 });
 </script>

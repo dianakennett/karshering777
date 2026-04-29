@@ -863,3 +863,79 @@ header nav ul li:not(.active) a:hover {
 .logout-btn:hover {
     background: #1f202a;
 }
+
+
+.admin-page {
+    width: 1200px;
+    margin: 70px auto;
+}
+
+.admin-card {
+    background: rgba(46, 63, 60, 0.75);
+    padding: 45px;
+    border-radius: 25px;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+.admin-card h1 {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.admin-subtitle {
+    color: #cfcfcf;
+    margin-bottom: 35px;
+}
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.admin-form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.admin-form input {
+    padding: 16px 18px;
+    border: none;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    outline: none;
+}
+
+.admin-form input::placeholder {
+    color: #d8d8d8;
+}
+
+.file-label {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: antiquewhite;
+    font-weight: 600;
+}
+
+.file-label input {
+    cursor: pointer;
+}
+
+.admin-btn {
+    width: 260px;
+    padding: 16px;
+    border: none;
+    border-radius: 14px;
+    background: #6b9c96;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.admin-btn:hover {
+    background: #5a8781;
+}

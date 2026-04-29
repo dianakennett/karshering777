@@ -5,7 +5,14 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.html");
     exit();
 }
+
+require 'php/db.php';
+
+$user_id = $_SESSION['user_id'];
+
+$bookings = $conn->query("SELECT * FROM bookings WHERE user_id = $user_id ORDER BY created_at DESC");
 ?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>

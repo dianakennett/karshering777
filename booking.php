@@ -1,3 +1,29 @@
+<?php
+session_start();
+require 'php/db.php';
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.html");
+    exit();
+}
+
+if (!isset($_GET['car_id'])) {
+    echo "Автомобиль не выбран";
+    exit();
+}
+
+$car_id = $_GET['car_id'];
+
+$stmt = $conn->prepare("SELECT * FROM cars WHERE id = ?");
+$stmt->bind_param("i", $car_id);
+$stmt->execute();
+$car = $stmt->get_result()->fetch_assoc();
+
+if (!$car) {
+    echo "Автомобиль не найден";
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -43,46 +69,39 @@
 
         <div class="booking-info">
 
-            <h2>Toyota Celica 2002</h2>
-            <p class="price">от 7 ₽/мин</p>
+           <input type="hidden" name="car_id" value="<?php echo $car['id']; ?>">
+           <h2><?php echo $car['name']; ?></h2>
+           <p><?php echo $car['price']; ?></p>
 
-            <div class="specs">
-                <div><b>Кузов:</b> Купе</div>
-                <div><b>Топливо:</b> Бензин</div>
-                <div><b>КПП:</b> Автомат</div>
-                <div><b>Мощность:</b> 190 л.с.</div>
-                <div><b>Объём:</b> 1.8 л</div>
-            </div>
+            <form action="php/booking.php" method="POST" class="booking-form">
 
-            <div class="booking-form">
+    <input type="hidden" name="car_name" value="Toyota Celica 2002">
 
-                <select>
-                    <option>Выберите город</option>
-                    <option>Новосибирск</option>
-                    <option>Чулым</option>
-                </select>
+    <select name="city" required>
+        <option value="">Выберите город</option>
+        <option value="Новосибирск">Новосибирск</option>
+        <option value="Москва">Москва</option>
+        <option value="Санкт-Петербург">Санкт-Петербург</option>
+    </select>
 
-                <div class="date-time">
-                    <input type="date">
-                    <input type="time">
-                </div>
+    <label>Взять</label>
+    <input type="date" name="date_from" required>
+    <input type="time" name="time_from" required>
 
-                <div class="date-time">
-                    <input type="date">
-                    <input type="time">
-                </div>
+    <label>Вернуть</label>
+    <input type="date" name="date_to" required>
+    <input type="time" name="time_to" required>
 
-                <select>
-                    <option>Выберите тариф</option>
-                    <option>Фикс</option>
-                    <option>Поминутный</option>
-                    <option>Свой тариф</option>
-                    <option>Подписка</option>
-                </select>
+    <select name="tariff" required>
+        <option value="Фикс">Фикс</option>
+        <option value="Поминутный">Поминутный</option>
+        <option value="Свой тариф">Свой тариф</option>
+        <option value="Подписка">Подписка</option>
+    </select>
 
-                <button class="book-btn">Забронировать</button>
+    <button type="submit" class="book-btn">Забронировать</button>
 
-            </div>
+</form>
         </div>
     </div>
 </div>

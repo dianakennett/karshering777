@@ -1,3 +1,7 @@
+<?php
+require 'php/db.php';
+$cars = $conn->query("SELECT * FROM cars ORDER BY created_at DESC");
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -36,59 +40,32 @@
 
     <div class="cars-grid">
 
-        <div class="car-card">
-            <img src="img/celica.jpg">
+      <?php while ($car = $cars->fetch_assoc()): ?>
+    <div class="car-card">
+        <img src="<?php echo $car['image']; ?>" alt="car">
 
-            <div class="car-info">
-                <h3>Toyota Celica <span class="tag">Sport</span></h3>
-                <p>Optimal 145₽</p>
-            </div>
-
-            <div class="car-hover">
-                <p>Мощность: 190 л.с.</p>
-                <p>Объем: 1.8 л</p>
-                <p>Размер: 4335×1735 мм</p>
-                <p>Кузов: Купе</p>
-
-                <a href="booking.html" class="book-btn">Забронировать</a>
-            </div>
+        <div class="car-info">
+            <h3>
+                <?php echo $car['name']; ?>
+                <span class="tag"><?php echo $car['category']; ?></span>
+            </h3>
+            <p><?php echo $car['price']; ?></p>
         </div>
 
-        <div class="car-card">
-            <img src="img/subaru-impreza-wrx-sti-a-line_1.jpg">
+        <div class="car-hover">
+            <p>Кузов: <?php echo $car['body_type']; ?></p>
+            <p>Топливо: <?php echo $car['fuel']; ?></p>
+            <p>КПП: <?php echo $car['transmission']; ?></p>
+            <p>Мощность: <?php echo $car['power']; ?></p>
+            <p>Объем: <?php echo $car['engine_volume']; ?></p>
+            <p>Размер: <?php echo $car['size']; ?></p>
+            <p>Статус: <?php echo $car['status']; ?></p>
 
-            <div class="car-info">
-                <h3>Subaru Impreza <span class="tag">Sport</span></h3>
-                <p>Business 145₽</p>
-            </div>
-
-            <div class="car-hover">
-                <p>Мощность: 180 л.с.</p>
-                <p>Объем: 2.0 л</p>
-                <p>Размер: 4460×1775 мм</p>
-                <p>Кузов: Седан</p>
-
-                <a href="booking.html" class="book-btn">Забронировать</a>
-            </div>
+           <a href="booking.php?car_id=<?php echo $car['id']; ?>" class="book-btn">
+    Забронировать</a>
         </div>
-
-        <div class="car-card">
-            <img src="img/minicup.jpg">
-
-            <div class="car-info">
-                <h3>Mini Cooper <span class="tag">Sport</span></h3>
-                <p>Mini 135₽</p>
-            </div>
-
-            <div class="car-hover">
-                <p>Мощность: 136 л.с.</p>
-                <p>Объем: 1.5 л</p>
-                <p>Размер: 3821×1727 мм</p>
-                <p>Кузов: Хэтчбек</p>
-
-                <a href="booking.html" class="book-btn">Забронировать</a>
-            </div>
-        </div>
+    </div>
+<?php endwhile; ?>
 
     </div>
 </div>

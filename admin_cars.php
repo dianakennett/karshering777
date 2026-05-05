@@ -27,11 +27,11 @@ require 'php/db.php';
 
     <header class="site-header">
         <div class="container">
-            <div class="logo"><a href="index.html">НОВОДРАЙВ</a></div>
+            <div class="logo"><a href="index.php">НОВОДРАЙВ</a></div>
 
             <nav class="menu">
                 <ul>
-                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="index.php">Главная</a></li>
                     <li><a href="cars.php">Автомобили</a></li>
                     <li><a href="profile.php">Профиль</a></li>
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
